@@ -71,9 +71,10 @@ groups = [
 ]
 group1, group2, group3 = groups
 
-group1_str = ",".join(group1)
-group2_str = ",".join(group2)
-group3_str = ",".join(group3)
+group1_str = ", ".join(group1)
+group2_str = ", ".join(group2)
+group3_str = ", ".join(group3)
+
 print(f'Группа 1: {group1_str}')
 print(f'Группа 2: {group2_str}')
 print(f'Группа 3: {group3_str}')
