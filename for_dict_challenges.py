@@ -12,7 +12,15 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Петя'},
 ]
-# ???
+name_count = {}
+for item in students:
+    name = item['first_name']
+    name_count[name] = name_count.get(name, 0)+1
+
+for name in name_count:
+    count = name_count[name]
+    print(f"{name}: {count}")
+
 
 
 # Задание 2
