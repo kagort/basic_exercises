@@ -161,10 +161,4 @@ is_male = {
 }
 
 def most_gender_finder(school, is_male):
-    class_with_most_boys = {'class_name': None, 'boys_count': 0}
-    class_with_most_girls = {'class_name': None, 'girls_count': 0}
-
-
-
-
 
