@@ -1,3 +1,6 @@
+
+
+
 # Задание 1
 # Дан список учеников, нужно посчитать количество повторений каждого имени ученика
 # Пример вывода:
@@ -20,6 +23,26 @@ for item in students:
 for name in name_count:
     count = name_count[name]
     print(f"{name}: {count}")
+print()
+
+
+
+
+def name_analysis (students):  #Функция для подсчета самого частого имени в словаре
+    name_count = {}
+
+    for item in students:
+        name = item['first_name']
+        name_count[name] = name_count.get(name, 0) + 1
+
+    max_freq = 0
+
+    for name in name_count:
+        count = name_count[name]
+        if count > max_freq:  # Как здесь обновляются переменные? Где хранится максимальное значение?
+            most_com_name = name
+            max_freq = count
+    return (most_com_name)
 
 
 
@@ -27,6 +50,8 @@ for name in name_count:
 # Дан список учеников, нужно вывести самое часто повторящееся имя
 # Пример вывода:
 # Самое частое имя среди учеников: Маша
+
+
 students = [
     {'first_name': 'Вася'},
     {'first_name': 'Петя'},
@@ -34,7 +59,10 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Оля'},
 ]
-# ???
+most_com_name = name_analysis(students)
+print(f'Самое частое имя среди учеников: {most_com_name}')
+print()
+
 
 
 # Задание 3
@@ -59,7 +87,17 @@ school_students = [
         {'first_name': 'Саша'},
     ],
 ]
-# ???
+class1, class2, class3 = school_students
+
+most_com_name1 = name_analysis(class1)
+most_com_name2 = name_analysis(class2)
+most_com_name3 = name_analysis(class3)
+print(f'Самое частое имя в классе 1: {most_com_name1}')
+print(f'Самое частое имя в классе 2: {most_com_name2}')
+print(f'Самое частое имя в классе 3: {most_com_name3}')
+print()
+
+
 
 
 # Задание 4
@@ -80,11 +118,33 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
-# ???
+
+
+def count_gender (school, is_male):
+
+    for info_about_class in school:
+        class_name = info_about_class['class']
+        students_list = info_about_class['students']
+        boys_count = 0
+        girls_count = 0
+
+        for item in students_list:
+            name = item['first_name']
+            if name in is_male and is_male[name]:
+                boys_count +=1
+            else:
+                girls_count +=1
+        print(f"Класс {class_name}: девочки {girls_count}, мальчики {boys_count}")
+
+count_gender(school, is_male)
+
+
+
+
 
 
 # Задание 5
-# По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
+# По информации об учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
 # Пример вывода:
 # Больше всего мальчиков в классе 3c
 # Больше всего девочек в классе 2a
@@ -99,5 +159,12 @@ is_male = {
     'Олег': True,
     'Миша': True,
 }
-# ???
+
+def most_gender_finder(school, is_male):
+    class_with_most_boys = {'class_name': None, 'boys_count': 0}
+    class_with_most_girls = {'class_name': None, 'girls_count': 0}
+
+
+
+
 
