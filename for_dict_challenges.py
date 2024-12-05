@@ -120,8 +120,8 @@ is_male = {
 }
 
 
-def count_gender (school, is_male):
-
+def count_gender (school, is_male): #Функция для подсчёта по половому признаку
+    results = []
     for info_about_class in school:
         class_name = info_about_class['class']
         students_list = info_about_class['students']
@@ -134,11 +134,17 @@ def count_gender (school, is_male):
                 boys_count +=1
             else:
                 girls_count +=1
-        print(f"Класс {class_name}: девочки {girls_count}, мальчики {boys_count}")
+        results.append({
+            'class_name': class_name,
+            'boys_count': boys_count,
+            'girls_count': girls_count
+        })
+    return results
 
-count_gender(school, is_male)
-
-
+gender_stats = count_gender(school, is_male)
+for data in gender_stats:
+    print(f"Класс {data['class_name']}: девочки {data['girls_count']}, мальчики {data['boys_count']}")
+print()
 
 
 
@@ -148,6 +154,26 @@ count_gender(school, is_male)
 # Пример вывода:
 # Больше всего мальчиков в классе 3c
 # Больше всего девочек в классе 2a
+
+def most_gender_finder(gender_stats_ex5):
+    class_with_max_boys = None
+    max_boys_count = 0
+
+    class_with_max_girls = None
+    max_girls_count = 0
+
+    for data in gender_stats_ex5:
+        if data['boys_count'] > max_boys_count:
+            max_boys_count = data['boys_count']
+            class_with_max_boys = data['class_name']
+
+        elif data ['girls_count'] > max_girls_count:
+            max_girls_count = data['girls_count']
+            class_with_max_girls = data['class_name']
+
+    return class_with_max_girls, class_with_max_boys
+
+
 
 school = [
     {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}]},
@@ -160,5 +186,10 @@ is_male = {
     'Миша': True,
 }
 
-def most_gender_finder(school, is_male):
+gender_stats_ex5 = count_gender(school, is_male)
 
+class_with_max_girls = most_gender_finder(gender_stats_ex5)
+class_with_max_boys = most_gender_finder(gender_stats_ex5)
+
+print(f"Больше всего мальчиков в классе {class_with_max_boys}")
+print(f"Больше всего девочек в классе {class_with_max_girls}")
