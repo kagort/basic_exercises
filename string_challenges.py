@@ -44,6 +44,6 @@ for word in words_set:
 sentence = 'Мы приехали в гости'
 words_set = sentence.split()
 word_count = len(words_set)
-sum_letters = len(sentence)
+sum_letters = len(sentence) # sum(len(word) for word in words_set)  - Так можно писать?
 len_word_avg = sum_letters / word_count
 print(len_word_avg)
