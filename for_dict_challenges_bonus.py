@@ -83,17 +83,17 @@ def most_messages_user(messages):
 #Задание 2. Вывести айди пользователя, на сообщения которого больше всего отвечали (Переделать)
 
 def most_reponded_user(messages):
-    answers_count = {}
+    reply_count = {}
     for item in messages:
-        answer_id = item['reply_for']
-        user_id = item['sent_by']
+        the_most_popular_message_id = item['reply_for']
+        user_id = the_most_popular_message_id['sent_by']
 
-        answers_count[answer_id] = answers_count.get(answer_id, 0)+1
+        reply_count[the_most_popular_message_id] = reply_count.get(the_most_popular_message_id, 0)+1
 
         max_user = None
         max_answer_count = 0
-        for answer_id in answers_count:
-            count = answers_count[answer_id]
+        for the_most_popular_message_id in reply_count:
+            count = reply_count[the_most_popular_message_id]
             if count > max_answer_count:
                 max_user = user_id
                 max_answer_count = count
@@ -112,6 +112,7 @@ if __name__ == "__main__":
 
     print(most_messages_user(messages))
     print()
+
     print(most_reponded_user(messages))
 
 
