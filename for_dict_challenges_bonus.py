@@ -35,6 +35,8 @@ import uuid
 import datetime
 
 import lorem
+from collections import Counter
+
 def generate_chat_history():
     messages_amount = random.randint(200, 1000)
     users_ids = list(
@@ -83,6 +85,24 @@ def most_messages_user(messages):
 #Задание 2. Вывести айди пользователя, на сообщения которого больше всего отвечали (Переделать)
 
 def most_reponded_user(messages):
+    for msg in messages:
+        if msg['reply_for'] is not None:
+            reply_id = [msg['reply_for']]
+    reply_count = Counter(reply_id)
+
+    most_replied_message_id = None
+    max_replies = 0
+
+    for message_id, count in reply_count.items():
+        if count > max_replies:
+            most_replied_message_id = message_id
+            max_replies = count
+
+    for msg in messages:
+        if msg['id'] == most_replied_message_id:
+            return f"Пользователь {msg['sent_by']} имеет сообщение с наибольшим количеством ответов: {reply_count[most_replied_message_id]}."
+
+'''''
     reply_count = {}
     for item in messages:
         the_most_popular_message_id = item['reply_for']
@@ -97,11 +117,8 @@ def most_reponded_user(messages):
             if count > max_answer_count:
                 max_user = user_id
                 max_answer_count = count
-    return f'Пользователь {max_user} на свои сообщения получил {max_answer_count} ответов. Больше всех!'
-
-
-
-
+    return f'Пользователь {max_user} на свои сообщения получил {max_answer_count} ответов. Больше всех!
+    '''''
 
 
 

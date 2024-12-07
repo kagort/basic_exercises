@@ -14,7 +14,7 @@ print(len_word)
 
 # Вывести количество гласных букв в слове
 word = 'Архангельск'
-
+пше
 word_lower = word.lower()
 vowels = 'аеёиоуыэюя'
 vowels_sum = 0
